@@ -3,7 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://dgtalnmd.github.io/github-admin-panel",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
@@ -18,6 +21,7 @@
     "@reduxjs/toolkit": "^2.6.1",
     "@tabler/icons-react": "^3.31.0",
     "classnames": "^2.5.1",
+    "gh-pages": "^6.3.0",
     "install": "^0.13.0",
     "npm": "^11.2.0",
     "react": "^19.0.0",
