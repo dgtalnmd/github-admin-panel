@@ -48,7 +48,7 @@ export const DetailModal: FC<{
       classNames={{ inner: classes.modalInner }}
       title={
         mode === "view"
-          ? "View repository parameters"
+          ? "View repository details"
           : name
           ? `Editing repository "${name}"`
           : "Add new repository"

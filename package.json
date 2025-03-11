@@ -5,7 +5,7 @@
   "type": "module",
   "homepage": "https://dgtalnmd.github.io/github-admin-panel",
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "tsc -b && vite build --base=/github-admin-panel",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc -b && vite build",
