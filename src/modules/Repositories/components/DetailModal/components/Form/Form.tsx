@@ -100,7 +100,6 @@ export const Form: FC<{
 
   const handleSubmit = (values: FormState) => {
     const params = {
-      name: values.name,
       description: values.description,
       private: values.visibility === "Private",
     };
@@ -115,16 +114,18 @@ export const Form: FC<{
   return (
     <form onSubmit={form.onSubmit(handleSubmit)}>
       <Stack>
-        <TextInput
-          required
-          label="Name"
-          value={form.values.name}
-          onChange={(event) =>
-            form.setFieldValue("name", event.currentTarget.value)
-          }
-          radius="md"
-          error={form.errors.name}
-        />
+        {!name && (
+          <TextInput
+            required
+            label="Name"
+            value={form.values.name}
+            onChange={(event) =>
+              form.setFieldValue("name", event.currentTarget.value)
+            }
+            radius="md"
+            error={form.errors.name}
+          />
+        )}
 
         <TextInput
           label="Description"
