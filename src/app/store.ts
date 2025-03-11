@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import { credentialsReducer } from "@/shared/slices";
 import { githubApi } from "@/shared/api";
 import { rtkQueryErrorLogger } from "./rtkQueryErrorLogger";

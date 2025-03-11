@@ -1,6 +1,7 @@
-import { isFetchBaseQueryError } from "@/shared/utils";
-import { notifications } from "@mantine/notifications";
 import { Middleware, isRejectedWithValue } from "@reduxjs/toolkit";
+import { notifications } from "@mantine/notifications";
+
+import { isFetchBaseQueryError } from "@/shared/utils";
 
 export const rtkQueryErrorLogger: Middleware = () => (next) => (action) => {
   if (isRejectedWithValue(action)) {

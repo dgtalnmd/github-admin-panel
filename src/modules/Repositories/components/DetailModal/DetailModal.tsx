@@ -1,14 +1,13 @@
-import { Alert, Loader, Modal } from "@mantine/core";
 import { FC, useEffect } from "react";
 
-import classes from "./DetailModal.module.css";
+import { Alert, Loader, Modal } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
 
 import { useLazyGetRepoQuery } from "@/shared/api";
-
 import { useAppSelector } from "@/app";
-
 import { View, Form } from "./components";
-import { notifications } from "@mantine/notifications";
+
+import classes from "./DetailModal.module.css";
 
 export const DetailModal: FC<{
   onClose: () => void;
@@ -65,8 +64,8 @@ export const DetailModal: FC<{
         </div>
       ) : !!name && !data ? (
         <Alert color="red">Error loading repository data</Alert>
-      ) : mode === "view" && data ? (
-        <View repo={data} />
+      ) : mode === "view" ? (
+        <View repo={data!} />
       ) : (
         <Form
           isGetRepoSuccess={isGetRepoSuccess}

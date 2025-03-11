@@ -1,5 +1,7 @@
-import { useDeleteRepoMutation, useLazyGetReposQuery } from "@/shared/api";
-import { useAppSelector } from "@/app";
+import { useEffect, useState } from "react";
+import { IconEye, IconTrash, IconEdit } from "@tabler/icons-react";
+import { notifications } from "@mantine/notifications";
+import { modals } from "@mantine/modals";
 import {
   ActionIcon,
   Alert,
@@ -11,19 +13,21 @@ import {
   Title,
   Tooltip,
 } from "@mantine/core";
-import classes from "./Repositories.module.css";
-import { IconEye, IconTrash, IconEdit } from "@tabler/icons-react";
-import { DetailModal } from "./components";
-import { modals } from "@mantine/modals";
-import { useEffect, useState } from "react";
-import { notifications } from "@mantine/notifications";
+
+import { useDeleteRepoMutation, useLazyGetReposQuery } from "@/shared/api";
+import { useAppSelector } from "@/app";
 import { isFetchBaseQueryError } from "@/shared/utils";
 import { PageLoader } from "@/shared/components";
+
+import { DetailModal } from "./components";
 import { ITEMS_PER_PAGE } from "./const";
 import { ModalParams } from "./types";
 
+import classes from "./Repositories.module.css";
+
 export const Repositories = () => {
   const { login } = useAppSelector((state) => state.credentials);
+
   const [page, setPage] = useState(1);
 
   const [modalParams, setModalParams] = useState<ModalParams>();
@@ -142,10 +146,7 @@ export const Repositories = () => {
 
   return (
     <>
-      <Flex
-        justify="space-between"
-        style={{ marginBottom: 15, padding: "0 10px" }}
-      >
+      <Flex justify="space-between" mb={15} p="0 10px">
         <Title order={3}>List of Repositories</Title>
         <Button
           onClick={() => {

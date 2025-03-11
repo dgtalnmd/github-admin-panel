@@ -1,7 +1,8 @@
-import { Container, Group } from "@mantine/core";
-import classes from "./Header.module.css";
-import { routes } from "@/app/routes";
 import { NavLink } from "react-router";
+import { Container, Group } from "@mantine/core";
+
+import { routes } from "@/app/routes";
+import classes from "./Header.module.css";
 
 export const Header = () => {
   const items = Object.entries(routes).map(([id, route]) => (

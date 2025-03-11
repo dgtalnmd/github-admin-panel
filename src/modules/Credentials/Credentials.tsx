@@ -1,3 +1,4 @@
+import { useDispatch } from "react-redux";
 import {
   Button,
   Flex,
@@ -10,7 +11,6 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
-import { useDispatch } from "react-redux";
 
 import { setCredentials } from "@/shared/slices";
 import { useAppSelector } from "@/app";
@@ -57,7 +57,7 @@ export const Credentials = () => {
             <TextInput
               required
               label="Login"
-              placeholder="Your Github's login"
+              placeholder="Enter Github login"
               value={form.values.login}
               onChange={(event) =>
                 form.setFieldValue("login", event.currentTarget.value)
@@ -68,7 +68,7 @@ export const Credentials = () => {
             <PasswordInput
               required
               label="Token"
-              placeholder="Your Github's API token"
+              placeholder="Enter Github API token"
               value={form.values.token}
               onChange={(event) =>
                 form.setFieldValue("token", event.currentTarget.value)

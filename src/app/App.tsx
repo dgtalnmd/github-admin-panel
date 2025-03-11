@@ -1,8 +1,9 @@
+import { BrowserRouter, Route, Routes } from "react-router";
+import { MantineProvider } from "@mantine/core";
+
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
 
-import { MantineProvider } from "@mantine/core";
-import { BrowserRouter, Route, Routes } from "react-router";
 import { routes } from "./routes";
 import { Layout } from "./Layout/Layout";
 import { Notifications } from "@mantine/notifications";

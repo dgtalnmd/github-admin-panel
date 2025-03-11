@@ -1,6 +1,7 @@
 import { FC, PropsWithChildren } from "react";
-import { Header } from "./components";
 import { AppShell, AppShellMain, Container } from "@mantine/core";
+
+import { Header } from "./components";
 import classes from "./Layout.module.css";
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {

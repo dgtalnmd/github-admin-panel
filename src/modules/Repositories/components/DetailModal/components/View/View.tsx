@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { Repo } from "@/shared/types";
 import { Text } from "@mantine/core";
+
+import { Repo } from "@/shared/types";
 
 export const View: FC<{ repo: Repo }> = ({ repo }) => {
   return (

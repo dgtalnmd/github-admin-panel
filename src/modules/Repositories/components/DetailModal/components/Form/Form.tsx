@@ -1,14 +1,14 @@
+import { FC, useEffect } from "react";
 import { Button, Group, Select, Stack, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { FormState } from "./types";
-import { FC, useEffect } from "react";
-
 import { notifications } from "@mantine/notifications";
+
 import { useCreateRepoMutation, useUpdateRepoMutation } from "@/shared/api";
 import { isFetchBaseQueryError, isGithubApiErrorData } from "@/shared/utils";
 import { capitalizeFirstLetter } from "@/shared/utils";
 import { Repo } from "@/shared/types";
 import { useAppSelector } from "@/app";
+import { FormState } from "./types";
 
 const DEFAULT_VISIBILITY = "Public";
 
