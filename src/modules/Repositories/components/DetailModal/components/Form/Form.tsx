@@ -15,9 +15,9 @@ const DEFAULT_VISIBILITY = "Public";
 export const Form: FC<{
   name?: string;
   onClose: () => void;
-  isGetRepoSuccess: boolean;
   data?: Repo;
-}> = ({ name, onClose, isGetRepoSuccess, data }) => {
+}> = ({ name, onClose, data }) => {
+  const isEdit = !!name;
   const { login } = useAppSelector((state) => state.credentials);
 
   const form = useForm<FormState>({
@@ -49,11 +49,13 @@ export const Form: FC<{
 
   useEffect(() => {
     const isError = isCreateError || isUpdateError;
+
     if (isError) {
       const error = createError || updateError;
-      let message = name
+      let message = isEdit
         ? "Editing the repository failed."
         : "Failed to create repository.";
+
       if (isFetchBaseQueryError(error) && isGithubApiErrorData(error.data)) {
         message = error.data.message;
 
@@ -86,7 +88,7 @@ export const Form: FC<{
   }, [isCreateSuccess, isUpdateSuccess, onClose]);
 
   useEffect(() => {
-    if (name && isGetRepoSuccess && data) {
+    if (isEdit && data) {
       form.setValues({
         name: data.name,
         description: data.description,
@@ -94,7 +96,7 @@ export const Form: FC<{
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, isGetRepoSuccess, name]);
+  }, [data, isEdit]);
 
   const isDisabled = !form.values.name || !form.values.visibility;
 
@@ -104,7 +106,7 @@ export const Form: FC<{
       private: values.visibility === "Private",
     };
 
-    if (name) {
+    if (isEdit) {
       submitUpdate({ owner: login, repo: name, data: params });
     } else {
       submitCreate({ ...params, name: values.name });
@@ -114,7 +116,7 @@ export const Form: FC<{
   return (
     <form onSubmit={form.onSubmit(handleSubmit)}>
       <Stack>
-        {!name && (
+        {!isEdit && (
           <TextInput
             required
             label="Name"

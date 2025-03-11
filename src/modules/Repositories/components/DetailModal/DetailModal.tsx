@@ -16,15 +16,8 @@ export const DetailModal: FC<{
 }> = ({ onClose, name, mode }) => {
   const { login } = useAppSelector((state) => state.credentials);
 
-  const [
-    getRepo,
-    {
-      data,
-      isSuccess: isGetRepoSuccess,
-      isFetching: isGetRepoFetching,
-      isError,
-    },
-  ] = useLazyGetRepoQuery();
+  const [getRepo, { data, isFetching: isGetRepoFetching, isError }] =
+    useLazyGetRepoQuery();
 
   useEffect(() => {
     if (isError) {
@@ -67,12 +60,7 @@ export const DetailModal: FC<{
       ) : mode === "view" ? (
         <View repo={data!} />
       ) : (
-        <Form
-          isGetRepoSuccess={isGetRepoSuccess}
-          name={name}
-          onClose={onClose}
-          data={data}
-        />
+        <Form name={name} onClose={onClose} data={data} />
       )}
     </Modal>
   );
