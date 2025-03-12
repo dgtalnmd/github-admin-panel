@@ -173,7 +173,7 @@ export const Repositories = () => {
             <Table.Tbody>{rows}</Table.Tbody>
           </Table>
 
-          <Flex justify="center">
+          <Flex justify="center" pb="xs">
             <Pagination
               mt="lg"
               total={Math.ceil(data.total_count / ITEMS_PER_PAGE)}
