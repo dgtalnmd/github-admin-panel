@@ -8,7 +8,6 @@ import {
   Button,
   Flex,
   Pagination,
-  ScrollArea,
   Table,
   Title,
   Tooltip,
@@ -162,19 +161,17 @@ export const Repositories = () => {
         <>
           {isFetching && <PageLoader />}
 
-          <ScrollArea>
-            <Table miw={700}>
-              <Table.Thead className={classes.header}>
-                <Table.Tr>
-                  <Table.Th>Name</Table.Th>
-                  <Table.Th>Description</Table.Th>
-                  <Table.Th>Visibility</Table.Th>
-                  <Table.Th></Table.Th>
-                </Table.Tr>
-              </Table.Thead>
-              <Table.Tbody>{rows}</Table.Tbody>
-            </Table>
-          </ScrollArea>
+          <Table miw={700}>
+            <Table.Thead>
+              <Table.Tr>
+                <Table.Th>Name</Table.Th>
+                <Table.Th>Description</Table.Th>
+                <Table.Th>Visibility</Table.Th>
+                <Table.Th></Table.Th>
+              </Table.Tr>
+            </Table.Thead>
+            <Table.Tbody>{rows}</Table.Tbody>
+          </Table>
 
           <Flex justify="center">
             <Pagination
